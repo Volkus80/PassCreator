@@ -6,9 +6,14 @@ export const CopyButton = styled.button`
     background: none;
     outline: none;
     background-image: url(${icon});
-    background-position: center;
+    background-position: center right;
     background-repeat: no-repeat;
     width: 50px;
     height: 50px;
     cursor: pointer;
+    transition: ease .3s;
+    &:hover {
+        transform: scale(1.05);
+
+    }
 `;
