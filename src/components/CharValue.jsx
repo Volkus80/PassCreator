@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 import { Container } from './PassBlock';
 
+const NewContainer = styled(Container)`
+    margin-bottom: 1.5rem;
+`;
+
 const Title = styled.p`
     color: white;
     font-size: 1.2rem;
@@ -15,9 +19,9 @@ const Value = styled.p`
 
 export default function CharValue() {
     return (
-        <Container>
+        <NewContainer>
             <Title>Character Length</Title>
             <Value>0</Value>
-        </Container>   
+        </NewContainer>   
     )
 }
