@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { CopyButton } from './CopyButton';
+import Text from '../UI/Text';
 
 export const Container = styled.div`
     display: flex;
@@ -9,18 +10,15 @@ export const Container = styled.div`
     width: 100%;
 `;
 
-const Pass = styled.p`
-    color:${props => props.color};
-    font-size: 2rem;
-    font-weight: 600;
-    color: #807e7e;
-`;
-
 
 export default function PassBlock() {
     return (
         <Container>
-            <Pass>LKDJJDjksdkj</Pass>
+            <Text
+                color='#807e7e'
+                fz='2rem'
+                fw='600'
+            >LKDJJDjksdkj</Text>
             <CopyButton />
         </Container>
     )

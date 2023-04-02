@@ -1,8 +1,10 @@
-
 import styled from 'styled-components';
+import { useState } from 'react';
 
 const Container = styled.div`
     width: 100%;
+    position: relative;
+    margin-bottom: 20px;
 `;
 
 const StyledRange = styled.input`
@@ -11,20 +13,9 @@ const StyledRange = styled.input`
     background: #000;
     height: 5px;
     border-radius: 50px;
-    margin-bottom: 20px;
-    &::-moz-range-thumb {
-        /* appearance: none; */
-        width:1rem;
-        height: 1rem;
-        background-color: white;
-        border-radius: 50%;
-        cursor: pointer;
-        &:hover {
-            background-color: black;
-            border: 2px solid 39e667;
-        }
-    }
-    &::-webkit-slider-thumb {
+    /* align-self: center; */
+    /* position: relative; */
+    /* &::-moz-range-thumb {
         appearance: none;
         width:1rem;
         height: 1rem;
@@ -35,14 +26,51 @@ const StyledRange = styled.input`
             background-color: black;
             border: 2px solid 39e667;
         }
+    } */
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        width:1rem;
+        height: 1rem;
+        cursor: pointer;
+        background-color: #fff;
+        border-radius: 50%;
+        z-index: 5;
+        :hover {
+            background-color: #000;
+            border: solid 2px #A5FFAD;
+        }
     }
 
 `;
 
+const Progress = styled.div`
+    width: ${props => {
+    const width = props.value * 100 / 20;
+    const more = 16 * width / 100 - .5;
+    return `calc(${width}% - ${more}px)`;
+    }};
+    background: #A5FFAD;
+    height: 5px;
+    border-top-left-radius: 2.5px;
+    border-bottom-left-radius: 2.5px;
+    position: absolute;
+    top: 50%;
+`;
+
 export default function Range() {
+    const [rangeValue, setRangeValue] = useState(10);
+    const handlValue = (e) => setRangeValue(e.target.value);
     return (
         <Container>
-            <StyledRange type='range' min='0' max='20' value='10' />
+            <StyledRange
+                type='range'
+                min='0'
+                max='20'
+                step='1'
+                value={rangeValue}
+                onChange = {handlValue}
+            />
+            <Progress value={rangeValue} />
         </Container>
     )
 }

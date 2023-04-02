@@ -2,12 +2,6 @@ import { useState } from "react";
 import styled from "styled-components";
 import checkmark from '../icons/checkmark.svg';
 
-// const Input = styled.input.attrs({
-//     type: checkbox,
-// })`
-//     display: none;
-// `;
-
 const Label = styled.label`
     color: white;
     font-weight: 400;
@@ -15,11 +9,12 @@ const Label = styled.label`
     & input {
         display: none;
         &:checked ~ span {
-            background-color: #39e667;
+            background-color: #A5FFAD;
             background-image: url(${checkmark});
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
+            border: solid 1px #A5FFAD;
         }
     }
     & span {
@@ -30,7 +25,7 @@ const Label = styled.label`
         height: 1rem;
         border: solid 1px white;
         &:hover {
-            border-color: #39e667;
+            border-color: #A5FFAD;
         }
         
     }

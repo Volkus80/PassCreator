@@ -1,7 +1,6 @@
 import { Container } from "./UI/Container";
 import { Part } from "./UI/Part";
-import { Header } from "./UI/Header";
-import { CopyButton } from "./components/CopyButton";
+import Header from "./UI/Header";
 import PassBlock from "./components/PassBlock";
 import CharValue from "./components/CharValue";
 import Checkbox from "./components/Checkbox";
@@ -10,7 +9,7 @@ import Range from "./components/Range";
 export default function App() {
     return (
         <Container>
-            <Header>Password Generator 10</Header>
+            <Header />
             <Part>
                 <PassBlock />
             </Part>
