@@ -1,7 +1,6 @@
 import { combineReducers } from "redux";
-import { counterReducer } from './counter/counter-reducer';
+import { rangeReducer } from "./range/rangeReducer";
 
 export const rootReducer = combineReducers({
-    counter: counterReducer,
-
+    range: rangeReducer,
 })

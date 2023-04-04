@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 import { Container } from './PassBlock';
+import { useSelector } from 'react-redux';
+import { selectRange } from '../store/range/rangeSelectors';
 import Text from '../UI/Text';
 
 const NewContainer = styled(Container)`
@@ -8,6 +10,8 @@ const NewContainer = styled(Container)`
 `;
 
 export default function CharValue() {
+    const rangeValue = useSelector(selectRange);
+
     return (
         <NewContainer>
             <Text
@@ -20,7 +24,7 @@ export default function CharValue() {
             <Text
                 color='#A5FFAD'
                 fz='2rem'
-            >0</Text>
-        </NewContainer>   
+            >{rangeValue}</Text>
+        </NewContainer>
     )
 }

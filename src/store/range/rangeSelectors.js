@@ -1,0 +1,1 @@
+export const selectRange = (state) => state.range;

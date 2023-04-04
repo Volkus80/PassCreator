@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
+import { rangeModify } from '../store/range/rangeActions';
+import { selectRange } from '../store/range/rangeSelectors';
 
 const Container = styled.div`
     width: 100%;
@@ -45,9 +47,9 @@ const StyledRange = styled.input`
 
 const Progress = styled.div`
     width: ${props => {
-    const width = props.value * 100 / 20;
-    const more = 16 * width / 100 - .5;
-    return `calc(${width}% - ${more}px)`;
+        const width = props.value * 100 / 20;
+        const more = 16 * width / 100 - .5;
+        return `calc(${width}% - ${more}px)`;
     }};
     background: #A5FFAD;
     height: 5px;
@@ -58,8 +60,10 @@ const Progress = styled.div`
 `;
 
 export default function Range() {
-    const [rangeValue, setRangeValue] = useState(10);
-    const handlValue = (e) => setRangeValue(e.target.value);
+    const value = useSelector(selectRange);
+    const dispatch = useDispatch();
+    const handlValue = (e) => dispatch(rangeModify(e.target.value));
+
     return (
         <Container>
             <StyledRange
@@ -67,10 +71,10 @@ export default function Range() {
                 min='0'
                 max='20'
                 step='1'
-                value={rangeValue}
-                onChange = {handlValue}
+                value={value}
+                onChange={handlValue}
             />
-            <Progress value={rangeValue} />
+            <Progress value={value} />
         </Container>
     )
 }
