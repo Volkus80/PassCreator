@@ -1,0 +1,1 @@
+export const selectUpperCase = (state) => state.upperCase;

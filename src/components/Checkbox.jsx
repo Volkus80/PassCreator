@@ -38,7 +38,7 @@ const Container = styled.div`
     justify-content: flex-start;
 `;
 
-export default function Checkbox({ text }) {
+export default function Checkbox({ value, changeValue, text }) {
     const [checked, setChecked] = useState(false);
     const handleChecked = () => {
         setChecked(!checked);
@@ -48,8 +48,8 @@ export default function Checkbox({ text }) {
             <Label>
                 <input
                     type="checkbox"
-                    checked={checked}
-                    onChange={handleChecked}
+                    checked={value}
+                    onChange={changeValue}
                 />
                 <span />
                 {text}
