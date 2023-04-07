@@ -1,1 +1,1 @@
-export const selectLowerCase = (state) => state.lowerCase;
+export const selectLowerCase = (state) => state.lower;

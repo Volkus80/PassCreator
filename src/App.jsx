@@ -14,10 +14,16 @@ import Range from "./components/Range";
 import Text from "./UI/Text";
 import ProgressBar from "./components/ProgressBar";
 import GenButton from "./components/GenButton";
+import { selectNumbers } from "./store/numbers/numbersSelectors";
+import { selectSymbols } from "./store/symbols/symbolsSelectors";
+import { setNumbers } from "./store/numbers/numbersActions";
+import { setSymbols } from "./store/symbols/symbolsActions";
 
 export default function App() {
     const upper = useSelector(selectUpperCase);
     const lower = useSelector(selectLowerCase);
+    const numbers = useSelector(selectNumbers);
+    const symbols = useSelector(selectSymbols);
     const dispatch = useDispatch();
     return (
         <Container>
@@ -38,8 +44,16 @@ export default function App() {
                     value={lower}
                     changeValue={() => dispatch(lowerCase)}
                 />
-                <Checkbox text='Include Numbers' />
-                <Checkbox text='Include Symbols' />
+                <Checkbox
+                    text='Include Numbers'
+                    value={numbers}
+                    changeValue={() => dispatch(setNumbers)}
+                />
+                <Checkbox
+                    text='Include Symbols'
+                    value={symbols}
+                    changeValue={() => dispatch(setSymbols)}
+                />
                 <Part
                     bg_color='black'
                     direction='row'

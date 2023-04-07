@@ -1,0 +1,1 @@
+export const selectSymbols = (state) => state.symbols;
