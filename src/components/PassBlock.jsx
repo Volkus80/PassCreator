@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 import { CopyButton } from './CopyButton';
 import Text from '../UI/Text';
+import { selectPassword } from '../store/password/passwordSelectors';
 
 export const Container = styled.div`
     display: flex;
@@ -12,14 +14,15 @@ export const Container = styled.div`
 
 
 export default function PassBlock() {
+    const keysStr = useSelector(selectPassword);
     return (
         <Container>
             <Text
                 color='#807e7e'
-                fz='2rem'
+                fz='1.5rem'
                 fw='600'
-            >LKDJJDjksdkj</Text>
-            <CopyButton />
+            >{keysStr}</Text>
+            <CopyButton onClick={() => navigator.clipboard.writeText(keysStr) } />
         </Container>
     )
 }

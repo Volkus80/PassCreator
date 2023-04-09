@@ -29,12 +29,13 @@ const Arrow = styled.div`
     margin-left: 20px;
 `;
 
-export default function GenButton() {
+export default function GenButton({clickHandler}) {
     const [active, setActive] = useState(false);
     return (
         <Button
             onMouseOver={() => setActive(true)}
             onMouseOut={() => setActive(false)}
+            onClick={clickHandler}
         >
             <Text
                 color={active ? '#A5FFAD' : '#000'}

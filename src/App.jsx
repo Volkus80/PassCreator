@@ -18,13 +18,30 @@ import { selectNumbers } from "./store/numbers/numbersSelectors";
 import { selectSymbols } from "./store/symbols/symbolsSelectors";
 import { setNumbers } from "./store/numbers/numbersActions";
 import { setSymbols } from "./store/symbols/symbolsActions";
+import { addString, removeString } from "./store/keys/keysActions";
+import { lowerLettersString, numbersString, symbolsString, upperLettersString } from "./data/data";
+import { selectRange } from './/store/range/rangeSelectors';
+import { selectKeys } from "./store/keys/keysSelectors";
+import { createPass } from "./features/createPass";
+import { getPassword } from "./store/password/passwordActions";
+
 
 export default function App() {
     const upper = useSelector(selectUpperCase);
     const lower = useSelector(selectLowerCase);
     const numbers = useSelector(selectNumbers);
     const symbols = useSelector(selectSymbols);
+    const range = useSelector(selectRange);
+    const keys = useSelector(selectKeys);
+    
     const dispatch = useDispatch();
+
+    const setKeys = (check, str) => {
+        !check ? dispatch(addString(str)) : dispatch(removeString(str))
+    };
+
+    
+
     return (
         <Container>
             <Header />
@@ -37,22 +54,38 @@ export default function App() {
                 <Checkbox
                     text='Include Uppercase Letters'
                     value={upper}
-                    changeValue={() => dispatch(upperCase)}
+                    changeValue={() => {
+                        dispatch(upperCase);
+                        setKeys(upper, upperLettersString);
+                    }
+                    }
                 />
                 <Checkbox
                     text='Include Lowercase Letters'
                     value={lower}
-                    changeValue={() => dispatch(lowerCase)}
+                    changeValue={() => {
+                        dispatch(lowerCase);
+                        setKeys(lower, lowerLettersString);
+                    }
+                    }
                 />
                 <Checkbox
                     text='Include Numbers'
                     value={numbers}
-                    changeValue={() => dispatch(setNumbers)}
+                    changeValue={() => {
+                        dispatch(setNumbers);
+                        setKeys(numbers, numbersString);
+                    }
+                    }
                 />
                 <Checkbox
                     text='Include Symbols'
                     value={symbols}
-                    changeValue={() => dispatch(setSymbols)}
+                    changeValue={() => {
+                        dispatch(setSymbols);
+                        setKeys(symbols, symbolsString);
+                    }
+                    }
                 />
                 <Part
                     bg_color='black'
@@ -66,7 +99,7 @@ export default function App() {
                     </Text>
                     <ProgressBar />
                 </Part>
-                <GenButton />
+                <GenButton clickHandler={() => dispatch(getPassword(createPass(keys, range)))} />
             </Part>
         </Container>
     )

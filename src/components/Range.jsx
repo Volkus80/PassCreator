@@ -15,20 +15,6 @@ const StyledRange = styled.input`
     background: #000;
     height: 5px;
     border-radius: 50px;
-    /* align-self: center; */
-    /* position: relative; */
-    /* &::-moz-range-thumb {
-        appearance: none;
-        width:1rem;
-        height: 1rem;
-        background-color: white;
-        border-radius: 50%;
-        cursor: pointer;
-        &:hover {
-            background-color: black;
-            border: 2px solid 39e667;
-        }
-    } */
     &::-webkit-slider-thumb {
         -webkit-appearance: none;
         width:1rem;
@@ -47,7 +33,7 @@ const StyledRange = styled.input`
 
 const Progress = styled.div`
     width: ${props => {
-        const width = props.value * 100 / 20;
+        const width = (props.value-5) * 100 / 15;
         const more = 16 * width / 100 - .5;
         return `calc(${width}% - ${more}px)`;
     }};
@@ -68,7 +54,7 @@ export default function Range() {
         <Container>
             <StyledRange
                 type='range'
-                min='0'
+                min='5'
                 max='20'
                 step='1'
                 value={value}

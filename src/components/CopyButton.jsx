@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 import icon from '../icons/copy.svg';
+import icon2 from '../icons/copy2.svg';
 
 export const CopyButton = styled.button`
     border: none;
     background: none;
     outline: none;
-    background-image: url(${icon});
+    background-image: url(${icon2});
     background-position: center right;
     background-repeat: no-repeat;
     width: 50px;
@@ -13,7 +14,7 @@ export const CopyButton = styled.button`
     cursor: pointer;
     transition: ease .3s;
     &:hover {
-        transform: scale(1.05);
+        background-image: url(${icon});
 
     }
 `;
